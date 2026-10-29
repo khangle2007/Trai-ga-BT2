@@ -1,6 +1,12 @@
 package com.example.trai_ga_bt2;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import android.content.Context;
 import android.os.Bundle;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ScrollView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +25,38 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        ScrollView scroll = findViewById(R.id.scrollView);
+        EditText edt = findViewById(R.id.editText);
+        EditText edt2 = findViewById(R.id.editText2);
+
+        edt.setOnEditorActionListener((v, actionId, event) -> {
+            scroll.postDelayed(() -> {
+                scroll.smoothScrollTo(0, edt.getTop());
+            }, 300);
+
+            return false;
+        });
+
+
+
+        edt2.setOnEditorActionListener((v, actionId, event) -> {
+            scroll.postDelayed(() -> {
+                scroll.smoothScrollTo(0, edt2.getTop());
+            }, 300);
+
+            return false;
+        });
+
+        EditText edt3 = findViewById(R.id.editText3);
+
+        edt3.setOnEditorActionListener((v, actionId, event) -> {
+            scroll.postDelayed(() -> {
+                scroll.smoothScrollTo(0, edt3.getTop());
+            }, 300);
+
+            return false;
         });
     }
 }
